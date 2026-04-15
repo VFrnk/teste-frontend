@@ -1,7 +1,7 @@
 'use client'
 
 import { FormProvider } from "react-hook-form";
-import { useLogin } from "@/hooks/use-login";
+import { useLogin } from "@/hooks/useLogin";
 import Field from "@/components/molecules/Field";
 import Button from "@/components/atoms/Button";
 
@@ -28,6 +28,8 @@ export default function LoginForm() {
         />
 
         <Button
+          className="w-2/3 h-9 self-center"
+          variant="primary"
           type="submit">
           Entrar
         </Button>

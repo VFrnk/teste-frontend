@@ -1,7 +1,7 @@
 'use client'
 
 import { FormProvider } from "react-hook-form";
-import { useRegister } from "@/hooks/use-register";
+import { useRegister } from "@/hooks/useRegister";
 import Field from "@/components/molecules/Field";
 import Button from "@/components/atoms/Button";
 
@@ -34,6 +34,8 @@ export default function RegisterForm() {
         />
 
         <Button
+          className="w-2/3 h-9 self-center"
+          variant="primary"
           type="submit">
           Entrar
         </Button>
