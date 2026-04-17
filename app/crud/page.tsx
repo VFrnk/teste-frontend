@@ -1,10 +1,11 @@
 'use client'
 
+import { Suspense } from "react"; 
 import { useSearchParams } from "next/navigation";
 import { useProductStore } from "@/store/useProductStore"
 import ProductsDisplay from "@/components/templates/ProductsDisplay";
 
-export default function ProductsPage() {
+function ProductsList() {
   const products = useProductStore((state) => state.products)
   const searchParams = useSearchParams();
   
@@ -21,19 +22,26 @@ export default function ProductsPage() {
   });
 
   const itemsPerPage = parseInt(searchParams.get("limit") || "6");
-
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const currentPage = Math.min(totalPages, parseInt(searchParams.get("page") || "1"));
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-
   const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
 
   return (
     <ProductsDisplay 
-    products={paginatedProducts} 
-    currentPage={currentPage}
-    totalPages={totalPages}/>
-  )
+      products={paginatedProducts} 
+      currentPage={currentPage}
+      totalPages={totalPages}
+    />
+  );
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={<div>Carregando produtos...</div>}>
+      <ProductsList />
+    </Suspense>
+  );
 }
