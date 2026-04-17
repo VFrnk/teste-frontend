@@ -5,7 +5,7 @@ interface ProductContainerProps {
   products: ProductType[];
 }
 
-export const ProductContainer = ({ products }: ProductContainerProps) => {
+export default function ProductContainer({ products }: ProductContainerProps) {
   if (products.length === 0) return (
     <div className="rounded-lg border-2 border-dashed border-slate-200 py-20 text-center">
       <p className="text-slate-400 font-medium">Nenhum produto encontrado.</p>

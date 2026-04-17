@@ -1,6 +1,6 @@
 import ProductType from "@/types/ProductType";
-import ProductController from "../organisms/ProductController";
-import { ProductContainer } from "../organisms/ProductContainer";
+import ProductController from "@/components/organisms/ProductController";
+import ProductContainer from "@/components/organisms/ProductContainer";
 
 interface ProductsDisplayProps {
   products: ProductType[];
