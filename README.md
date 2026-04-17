@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Teste Frontend
 
-## Getting Started
+Aplicacao frontend em `Next.js` com autenticacao via Firebase, dashboard com graficos e fluxo de CRUD de produtos.
 
-First, run the development server:
+## Instrucoes para rodar o projeto
+
+### 1) Pre-requisitos
+
+- Node.js 20+ (recomendado)
+- npm (ou outro gerenciador compativel)
+
+### 2) Instalar dependencias
+
+```bash
+npm install
+```
+
+### 3) Configurar variaveis de ambiente
+
+Crie um arquivo `.env.local` na raiz do projeto com as variaveis:
+
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+```
+
+### 4) Rodar em desenvolvimento
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A aplicacao fica disponivel em [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 5) Build de producao
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Tecnologias utilizadas
 
-To learn more about Next.js, take a look at the following resources:
+- `Next.js 16` com `App Router`
+- `React 19` + `TypeScript`
+- `Tailwind CSS 4` para estilos
+- `Firebase Authentication` para login/cadastro
+- `Zustand` para gerenciamento de estado global com persistencia
+- `React Hook Form` + `Zod` para formularios e validacao
+- `Recharts` para visualizacao de dados no dashboard
+- `ESLint` para padrao e qualidade de codigo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Decisoes tecnicas
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Arquitetura por camadas de componentes:** separacao em `atoms`, `molecules`, `organisms` e `templates` para facilitar reutilizacao e manutencao de UI.
+- **Roteamento com App Router:** paginas organizadas em `app/` (ex.: `login`, `register`, `dashboard` e `crud`) seguindo o padrao moderno do Next.js.
+- **Autenticacao com Firebase + cookie HTTP-only:** usuario autentica no Firebase e o token e salvo em cookie no servidor via server actions (`services/auth.ts`) para melhorar seguranca.
+- **Estado global persistido:** uso de `zustand/middleware` com `localStorage` para manter sessao de autenticacao entre recarregamentos.
+- **Validacao declarativa de formularios:** regras centralizadas em schemas `Zod` (`schemas/`) e integradas ao `React Hook Form`.
+- **Dados desacoplados da UI:** dados de exemplo isolados em `data/`, permitindo evolucao para consumo de API sem acoplamento forte aos componentes.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
