@@ -1,4 +1,4 @@
-import SectionType from "@/types/section";
+import SectionType from "@/types/sectionType";
 
 const homeSections: SectionType[] = [
   {

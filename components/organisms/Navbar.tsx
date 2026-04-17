@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import type SectionType from "@/types/section";
+import type SectionType from "@/types/sectionType";
 import NavbarMenu from "@/components/molecules/NavbarMenu";
 
 interface NavbarProps {

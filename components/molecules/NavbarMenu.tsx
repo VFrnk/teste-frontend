@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type SectionType from "@/types/section";
+import type SectionType from "@/types/sectionType";
 
 interface NavbarMenuProps {
   sections: SectionType[];

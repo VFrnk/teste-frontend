@@ -1,4 +1,4 @@
-import type SectionType from "@/types/section";
+import type SectionType from "@/types/sectionType";
 import Section from "@/components/molecules/Section";
 import Navbar from "@/components/organisms/Navbar";
 
