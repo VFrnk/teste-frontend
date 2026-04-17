@@ -13,6 +13,7 @@ Aplicacao frontend em `Next.js` com autenticacao via Firebase, dashboard com gra
 
 ```bash
 npm install
+
 ```
 
 ### 3) Configurar variaveis de ambiente
@@ -26,12 +27,14 @@ NEXT_PUBLIC_FIREBASE_PROJECT_ID=
 NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
 NEXT_PUBLIC_FIREBASE_APP_ID=
+
 ```
 
 ### 4) Rodar em desenvolvimento
 
 ```bash
 npm run dev
+
 ```
 
 A aplicacao fica disponivel em [http://localhost:3000](http://localhost:3000).
@@ -41,6 +44,7 @@ A aplicacao fica disponivel em [http://localhost:3000](http://localhost:3000).
 ```bash
 npm run build
 npm run start
+
 ```
 
 ## Tecnologias utilizadas
@@ -63,3 +67,16 @@ npm run start
 - **Validacao declarativa de formularios:** regras centralizadas em schemas `Zod` (`schemas/`) e integradas ao `React Hook Form`.
 - **Dados desacoplados da UI:** dados de exemplo isolados em `data/`, permitindo evolucao para consumo de API sem acoplamento forte aos componentes.
 
+## Screenshots
+
+![home](_screenshots/home.png)
+
+![login](_screenshots/login.png)
+
+![registro](_screenshots/register.png)
+
+![dashboard](_screenshots/dashboard.png)
+
+![crud de produtos](_screenshots/crud.png)
+
+![detalhes do produto](_screenshots/crud_details.png)
