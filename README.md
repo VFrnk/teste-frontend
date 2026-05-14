@@ -30,6 +30,10 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 
 ```
 
+Todas as variaveis acima sao **obrigatorias**: a aplicacao falha ao iniciar se alguma estiver ausente (validacao em `services/firebase.ts`).
+
+**Cookie de sessao (login):** em desenvolvimento (`bun run dev`), o cookie `auth-token` e gravado com `Secure: false` para funcionar em `http://localhost`. Em producao (`NODE_ENV=production`), usa-se `Secure: true` e `SameSite=Lax` (ver `services/auth.ts`).
+
 ### 4) Rodar em desenvolvimento
 
 ```bash

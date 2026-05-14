@@ -1,6 +1,12 @@
-import { PieChart, Pie, ResponsiveContainer, Tooltip } from 'recharts'
+import { PieChart, Pie, ResponsiveContainer, Tooltip } from "recharts";
 
-export default function ChartPie({ data }: any) {
+export type CategorySalesSlice = { name: string; sales: number; fill: string };
+
+interface ChartPieProps {
+  data: CategorySalesSlice[];
+}
+
+export default function ChartPie({ data }: ChartPieProps) {
   return (
     <div className="h-[200px] w-full">
       <ResponsiveContainer width="100%" height="100%">

@@ -3,9 +3,11 @@
 import Button from "@/components/atoms/Button"
 import { useRouter, useSearchParams } from "next/navigation";
 import { useProductStore } from "@/store/useProductStore";
+import { useToastStore } from "@/store/useToastStore";
 
 export default function ProductActions() {
   const router = useRouter();
+  const addToast = useToastStore(state => state.addToast);
   const searchParams = useSearchParams();
 
   const removeProduct = useProductStore(state => state.removeProduct);
@@ -14,13 +16,21 @@ export default function ProductActions() {
     const productId = Number(prompt("Digite o ID do produto a ser removido:"));
     
     if(isNaN(productId)) {
-      alert("ID inválido. Por favor, insira um número.");
+      addToast(
+        "error",
+        "Erro ao remover",
+        "ID inválido. Por favor, insira um número.",
+      );
       return;
     }
 
     removeProduct(productId);
 
-    alert(`Produto com ID ${productId} removido.`);
+    addToast(
+      "success",
+      "Removido com sucesso",
+      `produto com id ${productId} foi removido`,
+    );
   }
 
   const handleAdd = () => {

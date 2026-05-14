@@ -1,5 +1,4 @@
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
 import Button from "@/components/atoms/Button";
 
 interface PaginationProps {

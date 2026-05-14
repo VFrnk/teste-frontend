@@ -30,7 +30,9 @@ export default function LoginForm() {
         <Button
           className="w-2/3 h-9 self-center"
           variant="primary"
-          type="submit">
+          type="submit"
+          disabled={methods.formState.isSubmitting}
+        >
           Entrar
         </Button>
 

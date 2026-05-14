@@ -1,18 +1,24 @@
 import { auth } from "@/services/firebase";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod"
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useRouter } from "next/navigation";
 import { LoginAction } from "@/services/auth";
-import { useAuthStore } from "@/store/useAuthStore"
+import { useAuthStore } from "@/store/useAuthStore";
+import { useToastStore } from "@/store/useToastStore";
+import { mapFirebaseAuthError } from "@/lib/mapFirebaseAuthError";
 
-import {registerSchema} from "@/schemas/registerSchema";
+import { registerSchema } from "@/schemas/registerSchema";
 import type { RegisterFormData } from "@/schemas/registerSchema";
 
 export const useRegister = () => {
   const router = useRouter();
-  const setUser = useAuthStore(state => state.setUser);
+  const setUser = useAuthStore((state) => state.setUser);
+  const addToast = useToastStore((state) => state.addToast);
 
   const methods = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
@@ -20,7 +26,7 @@ export const useRegister = () => {
       username: "",
       email: "",
       password: "",
-    }
+    },
   });
 
   const onSubmit = async (data: RegisterFormData) => {
@@ -40,17 +46,22 @@ export const useRegister = () => {
       const token = await user.getIdToken();
       const result = await LoginAction(token);
 
-      setUser(user);
-
-      if (result.success) {
-        router.push("/dashboard");
+      if (!result.success) {
+        addToast(
+          "error",
+          "Cadastro",
+          "Conta criada, mas a sessão no servidor falhou. Entre manualmente."
+        );
+        return;
       }
 
+      setUser(user);
+      router.push("/dashboard");
     } catch (error) {
-      console.log("erro ao registrar usuario: ", error);
-      alert("Ocorreu um erro ao registrar. Tente novamente.");
+      console.error("Erro ao registrar usuário:", error);
+      addToast("error", "Cadastro", mapFirebaseAuthError(error));
     }
-  }
+  };
 
   return { methods, onSubmit };
-}
+};

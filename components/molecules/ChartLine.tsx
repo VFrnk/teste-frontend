@@ -1,6 +1,12 @@
 import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Line, ResponsiveContainer } from "recharts";
 
-export default function ChartLine({ data }: any) {
+export type MonthlySalesPoint = { month: string; sales: number };
+
+interface ChartLineProps {
+  data: MonthlySalesPoint[];
+}
+
+export default function ChartLine({ data }: ChartLineProps) {
   return (
     <div className="h-[300px] w-full max-w-[80%]">
       <ResponsiveContainer width="100%" height="100%">

@@ -36,8 +36,10 @@ export default function RegisterForm() {
         <Button
           className="w-2/3 h-9 self-center"
           variant="primary"
-          type="submit">
-          Entrar
+          type="submit"
+          disabled={methods.formState.isSubmitting}
+        >
+          Cadastrar
         </Button>
 
       </form>
