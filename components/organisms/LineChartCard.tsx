@@ -1,7 +1,10 @@
+import dynamic from "next/dynamic";
+
+const ChartLine = dynamic(() => import("@/components/molecules/ChartLine"), { ssr: false });
+
 import { data } from "@/data/salesPerMonth";
 
 import Card from "@/components/atoms/Card";
-import ChartLine from "@/components/molecules/ChartLine";
 
 export default function LineChartCard() {
   return (

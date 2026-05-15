@@ -8,7 +8,7 @@ interface FieldProps {
   children: React.ReactNode;
 }
 
-export default function Field({ id, name, children }: FieldProps) {
+export default function SelectField({ id, name, children }: FieldProps) {
   const { register, formState: { errors } } = useFormContext();
 
   return (
@@ -24,7 +24,7 @@ export default function Field({ id, name, children }: FieldProps) {
       {errors[id] &&
         <span
           className="text-red-500 text-sm">
-          {errors[id].message as string}
+            {errors[id].message as string}
         </span>}
     </div>
   )

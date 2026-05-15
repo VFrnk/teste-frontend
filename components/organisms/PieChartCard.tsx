@@ -1,7 +1,10 @@
+import dynamic from "next/dynamic";
+
+const ChartPie = dynamic(() => import("@/components/molecules/ChartPie"), { ssr: false });
+
 import { data } from "@/data/salesByCategory";
 
 import Card from "@/components/atoms/Card";
-import ChartPie from "@/components/molecules/ChartPie";
 
 export default function PieChartCard() {
   return (
